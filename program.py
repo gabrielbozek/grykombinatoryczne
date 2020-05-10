@@ -1,3 +1,5 @@
+import random
+
 def lenghtOfLongestAP(set):
     n = len(set)
     if (n <= 2):
@@ -64,20 +66,22 @@ def find_longest_monochromatic_arithmetic(list_, max_number_color):
         longest=max(lenghtOfLongestAP(one_color_list), longest)
     return longest
 
-liczbykomputera = [1, 2, 4, 6 , 8, 5, 54]
-maxcolor=4
-lista = []
+#losuje liczby z zakresu
+computers_number = random.sample(range(0, 1000), 10)
+number_of_colors=4
+list_ = []
 
-for i in range(len(liczbykomputera)):
-    print("Kolejna tura")
-    print("Liczba wybrana przez komputera to "+ str(liczbykomputera[i]))
-    insert_number(lista, liczbykomputera[i])
-    print([p.number for p in lista])
-    print([p.color for p in lista])
+for i in range(len(computers_number)):
+    print("\n")
+    print("Liczba wybrana przez komputera to "+ str(computers_number[i]))
+    insert_number(list_, computers_number[i])
+    print("Dotychczas wybrane liczby: ", end="")
+    print([p.number for p in list_])
+    print("Dotychczas wybrane kolorzy: ", end="")
+    print([p.color for p in list_])
+    print()
     c = input("Wybierz kolor ")
-    insert_color(lista, int(c))
-    print("Najdłuższy monochromatycnzy podciąg arytmetyczno ma długość " + str(find_longest_monochromatic_arithmetic(lista, maxcolor)))
-    print([p.number for p in lista])
-    print([p.color for p in lista])
+    insert_color(list_, int(c))
+    print("Najdłuższy monochromatycnzy podciąg arytmetyczno ma długość " + str(find_longest_monochromatic_arithmetic(list_, number_of_colors)))
 
 
