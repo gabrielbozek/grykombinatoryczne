@@ -219,7 +219,7 @@ for i in range(len(computers_number)):
     print("Dotychczas wybrane liczby: ", end="")
     print_numbers([p.number for p in list_])
     print()
-    print("Dotychczas wybrane kolorzy: ", end="")
+    print("Dotychczas wybrane kolory: ", end="")
     print_colors([p.color for p in list_])
     print()
     while True:
