@@ -1,6 +1,12 @@
 import random
+from math import gcd
 
 def lenghtOfLongestAP(set):
+    """
+    Zwraca długość najdłuższego podciągu arytmetycznego
+    :param set: lista liczb
+    :return: długość ciągu
+    """
     n = len(set)
     if (n <= 2):
         return n
@@ -85,8 +91,6 @@ def find_longest_monochromatic_arithmetic(list_, max_number_color):
         longest=max(lenghtOfLongestAP(one_color_list), longest)
     return longest
 
-from math import gcd
-
 def EKG_generator(size):
     """
     Generuje ciąg EKG o zadanej długości
@@ -124,10 +128,18 @@ def method4(size):
     return sequence
 
 def print_numbers(list_):
+    """
+    Wpisuje odpowiednio liczby
+    :param list_: Lista liczb
+    """
     for n in list_:
         print(n, end="\t")
 
 def print_colors(list_):
+    """
+    Wypisuje odpowiednio kolory
+    :param list_: Lista kolorów
+    """
     for c in list_:
         if c is None:
             print("", end="\t")
@@ -135,6 +147,11 @@ def print_colors(list_):
             print(c, end="\t")
 
 def input_range(maxlenght):
+    """
+    Funkcja odpowiedzialna za wpisanie odpowiednio zakresu losowania
+    :param maxlenght:
+    :return:
+    """
     try:
         l = int(input("Wpisz od której liczby losować: "))
         h = int(input("Wpisz do której liczby losować: "))
@@ -147,6 +164,10 @@ def input_range(maxlenght):
         return input_range(maxlenght)
     computers_number = random.sample(range(l, h + 1), maxlenght)
     return computers_number
+
+
+#-----------------------Skrypt gry--------------------------
+
 
 strategy_list = ["1. Losowy ciąg", "2. Kolejne liczy", "3. Ciąg EKG", "4. Połowy przedziałów"]
 
@@ -225,7 +246,7 @@ for i in range(len(computers_number)):
     while True:
         try:
             c = int(input("Wybierz kolor: "))
-            if 0<c<number_of_colors:
+            if 0<c<number_of_colors+1:
                 break
             raise Exception
         except:
