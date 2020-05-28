@@ -257,7 +257,7 @@ while True:
 
     for i in range(len(computers_number)):
         print("\n")
-        print("Liczba wybrana przez komputera to "+ str(computers_number[i]))
+        print("Liczba wybrana przez komputer to "+ str(computers_number[i]))
         insert_number(list_, computers_number[i])
         print("Dotychczas wybrane liczby: ", end="")
         print_numbers([p.number for p in list_])
@@ -290,7 +290,7 @@ while True:
                     color_max=c
 
 
-            print("Wygrał gracz komputerowy")
+            print("Wygrał komputer")
             print("Ciąg jest postaci:" , end=" ")
             l = longest_subset([p.number for p in list_ if p.color == color_max])
             print(l)
