@@ -172,92 +172,96 @@ def input_range(maxlenght):
 strategy_list = ["1. Losowy ciąg", "2. Kolejne liczy", "3. Ciąg EKG", "4. Połowy przedziałów"]
 
 print("Witamy w grze Szmeredi Online.")
-print("Wybierz parametry gry:")
 
 while True:
-    try:
-        maxlenght = int(input("Długość monochromatycznego ciągu arytmetycznego: "))
-        if(maxlenght>0):
-            break
-        else:
-            print("Wpisałeś liczbę mnniejszą od 1")
-    except:
-        print("Nie podałeś liczby naturalnej!")
-
-while True:
-    try:
-        number_of_colors = int(input("Liczba dostępnych kolorów: "))
-        if (number_of_colors > 0):
-            break
-        else:
-            print("Wpisałeś liczbę mnniejszą od 1")
-    except:
-        print("Nie podałeś liczby naturalnej!")
-
-while True:
-    try:
-        size = int(input("Maksymalna długość rozgrywki: "))
-        if (size > 0):
-            break
-        else:
-            print("Wpisałeś liczbę mnniejszą od 1")
-    except:
-        print("Nie podałeś liczby naturalnej!")
-
-while True:
-    print("Wybierz strategię:")
-    for s in strategy_list:
-        print(s)
-    print("q Opuść grę")
-    strategy = input("Wciśnij q lub liczbę odpowiadającą wybranej strategii:")
-    if strategy == "q":
-        quit()
-    try:
-        strategy=int(strategy)
-        computers_number = []
-        if strategy == 1:
-            computers_number = input_range(size)
-            break
-        if strategy == 2:
-            computers_number = list(range(1, size + 1))
-            break
-        if strategy == 3:
-            computers_number = EKG_generator(size)
-            break
-        if strategy == 4:
-            computers_number = method4(size)
-            break
-        raise Exception
-    except:
-        print("Nie wybrałeś odpowiedniej strategii!")
-
-list_ = []
-
-for i in range(len(computers_number)):
-    print("\n")
-    print("Liczba wybrana przez komputera to "+ str(computers_number[i]))
-    insert_number(list_, computers_number[i])
-    print("Dotychczas wybrane liczby: ", end="")
-    print_numbers([p.number for p in list_])
-    print()
-    print("Dotychczas wybrane kolory: ", end="")
-    print_colors([p.color for p in list_])
-    print()
+    computer_won=False; #zmienna potrzeba do wyświelteniu na koncu kto wygrał
+    print("Wybierz parametry gry:")
     while True:
         try:
-            c = int(input("Wybierz kolor: "))
-            if 0<c<number_of_colors+1:
+            maxlenght = int(input("Długość monochromatycznego ciągu arytmetycznego: "))
+            if(maxlenght>0):
+                break
+            else:
+                print("Wpisałeś liczbę mnniejszą od 1")
+        except:
+            print("Nie podałeś liczby naturalnej!")
+
+    while True:
+        try:
+            number_of_colors = int(input("Liczba dostępnych kolorów: "))
+            if (number_of_colors > 0):
+                break
+            else:
+                print("Wpisałeś liczbę mnniejszą od 1")
+        except:
+            print("Nie podałeś liczby naturalnej!")
+
+    while True:
+        try:
+            size = int(input("Maksymalna długość rozgrywki: "))
+            if (size > 0):
+                break
+            else:
+                print("Wpisałeś liczbę mnniejszą od 1")
+        except:
+            print("Nie podałeś liczby naturalnej!")
+
+    while True:
+        print("Wybierz strategię:")
+        for s in strategy_list:
+            print(s)
+        print("q Opuść grę")
+        strategy = input("Wciśnij q lub liczbę odpowiadającą wybranej strategii:")
+        if strategy == "q":
+            quit()
+        try:
+            strategy=int(strategy)
+            computers_number = []
+            if strategy == 1:
+                computers_number = input_range(size)
+                break
+            if strategy == 2:
+                computers_number = list(range(1, size + 1))
+                break
+            if strategy == 3:
+                computers_number = EKG_generator(size)
+                break
+            if strategy == 4:
+                computers_number = method4(size)
                 break
             raise Exception
         except:
-            print("Nie wybrano odpowiedniego koloru!")
+            print("Nie wybrałeś odpowiedniej strategii!")
 
-    insert_color(list_, int(c))
+    list_ = []
 
-    if find_longest_monochromatic_arithmetic(list_, number_of_colors) >= maxlenght:
-        print("Wygrał gracz komputerowy")
-        quit()
-#    print("Najdłuższy monochromatycnzy podciąg arytmetyczno ma długość " + str(find_longest_monochromatic_arithmetic(list_, number_of_colors)))
+    for i in range(len(computers_number)):
+        print("\n")
+        print("Liczba wybrana przez komputera to "+ str(computers_number[i]))
+        insert_number(list_, computers_number[i])
+        print("Dotychczas wybrane liczby: ", end="")
+        print_numbers([p.number for p in list_])
+        print()
+        print("Dotychczas wybrane kolory: ", end="")
+        print_colors([p.color for p in list_])
+        print()
+        while True:
+            try:
+                c = int(input("Wybierz kolor: "))
+                if 0<c<number_of_colors+1:
+                    break
+                raise Exception
+            except:
+                print("Nie wybrano odpowiedniego koloru!")
 
-print("Wygrał gracz")
-quit()
+        insert_color(list_, int(c))
+        print("Najdłuższy monochromatycnzy podciąg arytmetyczno ma długość " + str(
+            find_longest_monochromatic_arithmetic(list_, number_of_colors)))
+
+        if find_longest_monochromatic_arithmetic(list_, number_of_colors) >= maxlenght:
+            print("Wygrał gracz komputerowy")
+            computer_won=True
+            break
+    if not computer_won:
+        print("Wygrał gracz")
+
