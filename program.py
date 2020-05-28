@@ -270,7 +270,8 @@ while True:
                 if lenghtOfLongestAP(one_color_list)> longest:
                     longest = lenghtOfLongestAP(one_color_list)
                     color_max=c
-            subset = longest_subset([p.number for p in list_ if p.color == color_max])
+
+            subset = [p.number for p in list_ if p.color == color_max]
 
             subsequence = []
             for i in subset:
@@ -285,6 +286,7 @@ while True:
             print()
             computer_won=True
             break
+
     if not computer_won:
         print("Wygrał gracz")
 
