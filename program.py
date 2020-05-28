@@ -166,25 +166,6 @@ def input_range(maxlenght):
     return computers_number
 
 
-def longest_subset(xs):
-    """
-    Wypisuje najdłuższy podciąg geometryczny (ma gorszą złożoność niż funkcja powyżej
-    :param xs: lista
-    :return:
-    """
-    table = {}
-    for x in xs:
-        start = table.get(x-1, x)
-        end = table.get(x+1, x)
-        if x+1 in table:
-            table[end] = start
-        if x-1 in table:
-            table[start] = end
-        table[x] = (start if x-1 in table else end)
-
-    start, end = max(table.items(), key=lambda pair: pair[1]-pair[0])
-    return list(range(start, end+1))
-
 
 #-----------------------Skrypt gry--------------------------
 
@@ -277,13 +258,34 @@ while True:
         insert_color(list_, int(c))
         lenght_longest=find_longest_monochromatic_arithmetic(list_, number_of_colors)
 
-        print("Najdłuższy monochromatycnzy podciąg arytmetyczno ma długość " + str(lenght_longest))
+        print("Najdłuższy monochromatycnzy podciąg arytmetyczny ma długość " + str(lenght_longest))
 
         if lenght_longest >= maxlenght:
             print("Wygrał komputer")
 
+            color_max=0
+            longest = 0
+            for c in range(1, number_of_colors + 1):
+                one_color_list = [p.number for p in list_ if p.color == c]
+                if lenghtOfLongestAP(one_color_list)> longest:
+                    longest = lenghtOfLongestAP(one_color_list)
+                    color_max=c
+            subset = longest_subset([p.number for p in list_ if p.color == color_max])
+
+            subsequence = []
+            for i in subset:
+                temp = subset.copy()
+                temp.remove(i)
+                if(lenghtOfLongestAP(temp)<longest):
+                    subsequence.append(i)
+
+
+            print("Najdłuższy podciąg: ", end="")
+            print_numbers(subsequence)
+            print()
             computer_won=True
             break
     if not computer_won:
         print("Wygrał gracz")
+
 
