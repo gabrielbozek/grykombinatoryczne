@@ -385,7 +385,7 @@
    'PYMODULE'),
   ('struct', 'c:\\programdata\\anaconda3\\lib\\struct.py', 'PYMODULE'),
   ('fnmatch', 'c:\\programdata\\anaconda3\\lib\\fnmatch.py', 'PYMODULE'),
-  ('stringprep', 'c:\\programdata\\anaconda3\\lib\\stringprep.py', 'PYMODULE'),
   ('typing', 'c:\\programdata\\anaconda3\\lib\\typing.py', 'PYMODULE'),
+  ('stringprep', 'c:\\programdata\\anaconda3\\lib\\stringprep.py', 'PYMODULE'),
   ('_py_abc', 'c:\\programdata\\anaconda3\\lib\\_py_abc.py', 'PYMODULE'),
   ('random', 'c:\\programdata\\anaconda3\\lib\\random.py', 'PYMODULE')])
