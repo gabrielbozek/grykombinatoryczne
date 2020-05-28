@@ -280,22 +280,7 @@ while True:
         print("Najdłuższy monochromatycnzy podciąg arytmetyczno ma długość " + str(lenght_longest))
 
         if lenght_longest >= maxlenght:
-
-            color_max=0
-            longest = 0
-            for c in range(1, number_of_colors + 1):
-                one_color_list = [p.number for p in list_ if p.color == c]
-                if lenghtOfLongestAP(one_color_list)> longest:
-                    longest = lenghtOfLongestAP(one_color_list)
-                    color_max=c
-
-
             print("Wygrał komputer")
-            print("Ciąg jest postaci:" , end=" ")
-            l = longest_subset([p.number for p in list_ if p.color == color_max])
-            print(l)
-
-
 
             computer_won=True
             break
