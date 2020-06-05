@@ -162,9 +162,9 @@ def input_range(maxlenght):
 
 #-----------------------Skrypt gry--------------------------
 
-strategy_list = ["1. Losowy ciąg", "2. Kolejne liczy", "3. Ciąg EKG", "4. Połowy przedziałów"]
+strategy_list = ["1. Losowy ciąg", "2. Kolejne liczby", "3. Ciąg EKG", "4. Połowy przedziałów"]
 
-print("Witamy w grze Szmeredi Online.")
+print("Witamy w grze Szemeredi Online.")
 
 while True:
     computer_won=False; #zmienna potrzeba do wyświelteniu na koncu kto wygrał
